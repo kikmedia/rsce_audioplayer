@@ -1,0 +1,39 @@
+<section class="audio-player card" style="margin-top:150px">
+    <div class="cardx">
+      <div class="card-body">
+      	
+      	
+        <h3 class="card-title col text-center"><? echo $this->headline; ?></h3>
+        
+        <div class="row align-items-center mt-4 mb-3 mx-0">
+          <i id="play-button" class="material-icons play-pause text-primary mr-2" aria-hidden="true">play_circle_outline</i>
+          <i id="pause-button" class="material-icons play-pause d-none text-primary mr-2" aria-hidden="true">pause_circle_outline</i>
+          <i id="next-button" class="material-icons text-primary ml-2 mr-3" aria-hidden="true">skip_next</i>
+          <div class="col ml-auto rounded-circle border border-primary p-1">
+            <img id="thumbnail" class="img-fluid rounded-circle" src="{{file::<?php echo $this->titleImage; ?>}}" alt="">
+          </div>
+        </div>
+        
+        
+        <div class="p-0 m-0" id="now-playing">
+          <p class="font-italic mb-0">{{iflng::en}}Now Playing{{iflng::de}}Aktueller Titel{{iflng}}: </p>
+          <p class="lead" id="title"></p>
+        </div>
+        
+        
+        <div class="progress-bar progress col-12 mb-3">
+        </div>
+      </div>
+      
+      <ul class="playlist list-group list-group-flush">
+		<?php foreach ($this->boxes as $index => $box): ?>
+			<li audio_url="{{env::url}}/{{file::<?php echo $box->audio_url ?>}}" img_url="{{file::<?php echo $box->image ?>}}" class="list-group-item playlist-item"><?php echo $box->text ?> </li>
+		<?php endforeach ?>      
+      </ul>
+	</div>
+  <audio id="audio-player" class="d-none" src="" type="audio/mp3" controls="controls"></audio>
+</section>
+
+
+
+
